@@ -1,6 +1,6 @@
 homeassistant:
   # Name of the location where Home Assistant is running
-  name: Home
+  name: Casa
   # Location required to calculate the time the sun rises and sets
   latitude: 40.4165
   longitude: -3.7026
@@ -68,3 +68,8 @@ cloud:
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
+
+
+
+zwave:
+  usb_path: /dev/ttyACM0
