@@ -76,7 +76,7 @@ zwave:
   device_config: !include zwave_device_config.yaml
 
 telegram_bot:
-  - platform: polling
+  - platform: broadcast
     api_key: !secret grcanosabot_apikey
     allowed_chat_ids:
       - !secret grcanosa_chatid
@@ -89,3 +89,13 @@ notify:
   - name: bot_to_sara
     platform: telegram
     chat_id: !secret sara_chatid
+
+
+input_number:
+  termo_time:
+    name: Minutos termo
+    icon: mdi:clock-start
+    initial: 0
+    min: 0
+    max: 75
+    step: 5
