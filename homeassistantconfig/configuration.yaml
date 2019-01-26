@@ -51,12 +51,12 @@ logbook:
 map:
 
 # Track the sun
-sun:
+# sun:
 
 # Sensors
 sensor:
   # Weather prediction
-  - platform: yr
+  # - platform: yr
 
 # Text to speech
 tts:
@@ -74,3 +74,18 @@ script: !include scripts.yaml
 zwave:
   usb_path: /dev/ttyACM0
   device_config: !include zwave_device_config.yaml
+
+telegram_bot:
+  - platform: polling
+    api_key: !secret grcanosabot_apikey
+    allowed_chat_ids:
+      - !secret grcanosa_chatid
+      - !secret sara_chatid
+
+notify:
+  - name: bot_to_grcanosa
+    platform: telegram
+    chat_id: !secret grcanosa_chatid
+  - name: bot_to_sara
+    platform: telegram
+    chat_id: !secret sara_chatid
