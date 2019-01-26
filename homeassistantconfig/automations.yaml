@@ -25,3 +25,12 @@
   - data:
       entity_id: switch.switchtwo
     service: switch.turn_off
+- id: 'termo_input_number'
+  alias: Termo Manual
+  trigger: 
+    platform: state
+      entity_id: input_number.termo_time
+    action:
+      - delay: '00:{{ states.input_number.termo_time.step | int }}:00'
+      - service: "input_number.decrement"
+        entity_id: "input_number.termo_time"
