@@ -3,3 +3,8 @@ termo:
   entities:
     - "input_number.termo_time"
     - "switch.switchone"
+home:
+  name: "Home"
+  entities:
+    - sensor.date
+    - sensor.time
