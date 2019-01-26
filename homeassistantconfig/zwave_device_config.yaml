@@ -1,0 +1,39 @@
+sensor.neo_coolcam_power_plug_12a_previous_reading_2:
+  ignored: true
+  polling_intensity: 0
+sensor.neo_coolcam_power_plug_12a_previous_reading_3:
+  ignored: true
+  polling_intensity: 0
+sensor.neo_coolcam_power_plug_12a_previous_reading_4:
+  ignored: true
+  polling_intensity: 0
+sensor.neo_coolcam_power_plug_12a_interval_2:
+  ignored: true
+  polling_intensity: 0
+sensor.neo_coolcam_power_plug_12a_interval_3:
+  ignored: true
+  polling_intensity: 0
+sensor.neo_coolcam_power_plug_12a_interval_4:
+  ignored: true
+  polling_intensity: 0
+sensor.neo_coolcam_power_plug_12a_previous_reading:
+  ignored: true
+  polling_intensity: 0
+sensor.neo_coolcam_power_plug_12a_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
+sensor.neo_coolcam_power_plug_12a_alarm_level:
+  ignored: true
+  polling_intensity: 0
+sensor.neo_coolcam_power_plug_12a_alarm_type:
+  ignored: true
+  polling_intensity: 0
+sensor.neo_coolcam_power_plug_12a_current:
+  ignored: true
+  polling_intensity: 0
+sensor.neo_coolcam_power_plug_12a_exporting:
+  ignored: true
+  polling_intensity: 0
+sensor.neo_coolcam_power_plug_12a_interval:
+  ignored: true
+  polling_intensity: 0
