@@ -88,3 +88,15 @@ sensor.neo_coolcam_power_plug_12a_power_management:
 sensor.neo_coolcam_power_plug_12a_voltage:
   ignored: true
   polling_intensity: 0
+sensor.neo_coolcam_door_window_detector_access_control:
+  ignored: true
+  polling_intensity: 0
+sensor.neo_coolcam_door_window_detector_alarm_level:
+  ignored: true
+  polling_intensity: 0
+sensor.neo_coolcam_door_window_detector_alarm_type:
+  ignored: true
+  polling_intensity: 0
+sensor.neo_coolcam_door_window_detector_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
