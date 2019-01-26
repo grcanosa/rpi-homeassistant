@@ -16,12 +16,16 @@
   alias: Enchufe baño
   trigger:
   - entity_id: switch.switchtwo
+    for: 00:08:00
     from: 'off'
     platform: state
     to: 'on'
   condition: []
   action:
-  - delay: 00:10:00
+  - data:
+      entity_id: switch.switchtwo
+    service: switch.turn_off
+  - delay: 00:00:30
   - data:
       entity_id: switch.switchtwo
     service: switch.turn_off
