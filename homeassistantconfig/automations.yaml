@@ -31,6 +31,6 @@
     platform: state
     entity_id: input_number.termo_time
   action:
-    - delay: '00:{{ states.input_number.termo_time.step | int }}:00'
+    - delay: '00:{{ input_number.termo_time.step | int }}:00'
     - service: "input_number.decrement"
       entity_id: "input_number.termo_time"
