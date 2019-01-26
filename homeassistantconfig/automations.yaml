@@ -29,7 +29,7 @@
   alias: Termo Manual
   trigger: 
     platform: state
-      entity_id: input_number.termo_time
+    entity_id: input_number.termo_time
   action:
     - delay: '00:{{ states.input_number.termo_time.step | int }}:00'
     - service: "input_number.decrement"
