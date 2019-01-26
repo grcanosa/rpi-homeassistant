@@ -25,12 +25,38 @@
   - data:
       entity_id: switch.switchtwo
     service: switch.turn_off
-- id: 'termo_input_number'
+- id: termo_input_number
   alias: Termo Manual
-  trigger: 
+  trigger:
     platform: state
     entity_id: input_number.termo_time
   action:
-    - delay: '00:05:00'
-    - service: "input_number.decrement"
-      entity_id: "input_number.termo_time"
+  - delay: 00:05:00
+  - service: input_number.decrement
+    entity_id: input_number.termo_time
+- id: '1548527202535'
+  alias: Termo Sensor OFF-ON
+  trigger:
+  - entity_id: binary_sensor.termo_on
+    for: 00:00:30
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.switchone
+    service: switch.turn_on
+- id: '1548527264250'
+  alias: Termo Sensor ON-OFF
+  trigger:
+  - entity_id: binary_sensor.termo_on
+    for: 00:00:30
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.switchone
+    service: switch.turn_off
