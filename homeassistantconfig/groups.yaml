@@ -1,0 +1,6 @@
+termo:
+  name: "Termo"
+  entities:
+    - "input_numer.termo_time"
+    - "switch.switchone"
+    
