@@ -55,6 +55,10 @@ map:
 
 # Sensors
 sensor:
+  - platform: time_date
+    display_options:
+      - 'date'
+      - 'time'
   # Weather prediction
   # - platform: yr
 
@@ -100,11 +104,6 @@ input_number:
     max: 75
     step: 5
 
-sensor:
-  - platform: time_date
-    display_options:
-      - 'date'
-      - 'time'
 
 
 binary_sensor:
