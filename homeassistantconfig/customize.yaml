@@ -3,4 +3,5 @@ binary_sensor.neo_coolcam_door_window_detector_sensor:
 binary_sensor.maindoor:
   device_class: door
 zwave.switchone:
-  node_name: Switch one
+  manufacturer_name: Neo CoolCam
+  product_name: Power plug 12A

@@ -1,5 +1,5 @@
 - id: '1548503190225'
-  alias: Termo mañanas
+  alias: Termo ON 05:00
   trigger:
   - at: 05:00
     platform: time
@@ -26,14 +26,14 @@
       entity_id: switch.switchtwo
     service: switch.turn_off
 - id: termo_input_number
-  alias: Termo Manual
+  alias: Termo slider Auto-Decrement
   trigger:
+  - entity_id: input_number.termo_time
     platform: state
-    entity_id: input_number.termo_time
   action:
   - delay: 00:05:00
-  - service: input_number.decrement
-    entity_id: input_number.termo_time
+  - entity_id: input_number.termo_time
+    service: input_number.decrement
 - id: '1548527202535'
   alias: Termo Sensor OFF-ON
   trigger:
@@ -55,6 +55,19 @@
     from: 'on'
     platform: state
     to: 'off'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.switchone
+    service: switch.turn_off
+- id: '1548531355158'
+  alias: Termo más de hora y media encendido
+  trigger:
+  - entity_id: switch.switchone
+    for: 01:30:00
+    from: 'off'
+    platform: state
+    to: 'on'
   condition: []
   action:
   - data:
