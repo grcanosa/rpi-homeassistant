@@ -37,3 +37,36 @@ sensor.neo_coolcam_power_plug_12a_exporting:
 sensor.neo_coolcam_power_plug_12a_interval:
   ignored: true
   polling_intensity: 0
+sensor.neo_coolcam_unknown_type_0200_id_1027_alarm_type:
+  ignored: true
+  polling_intensity: 0
+sensor.neo_coolcam_unknown_type_0200_id_1027_exporting:
+  ignored: true
+  polling_intensity: 0
+sensor.neo_coolcam_unknown_type_0200_id_1027_interval:
+  ignored: true
+  polling_intensity: 0
+sensor.neo_coolcam_unknown_type_0200_id_1027_interval_2:
+  ignored: true
+  polling_intensity: 0
+sensor.neo_coolcam_unknown_type_0200_id_1027_interval_3:
+  ignored: true
+  polling_intensity: 0
+sensor.neo_coolcam_unknown_type_0200_id_1027_interval_4:
+  ignored: true
+  polling_intensity: 0
+sensor.neo_coolcam_unknown_type_0200_id_1027_previous_reading:
+  ignored: true
+  polling_intensity: 0
+sensor.neo_coolcam_unknown_type_0200_id_1027_previous_reading_2:
+  ignored: true
+  polling_intensity: 0
+sensor.neo_coolcam_unknown_type_0200_id_1027_previous_reading_3:
+  ignored: true
+  polling_intensity: 0
+sensor.neo_coolcam_unknown_type_0200_id_1027_previous_reading_4:
+  ignored: true
+  polling_intensity: 0
+sensor.neo_coolcam_unknown_type_0200_id_1027_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
