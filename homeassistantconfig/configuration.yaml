@@ -73,3 +73,4 @@ script: !include scripts.yaml
 
 zwave:
   usb_path: /dev/ttyACM0
+  device_config: !include zwave_device_config.yaml
