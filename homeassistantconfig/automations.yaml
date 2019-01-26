@@ -8,3 +8,20 @@
   - data:
       entity_id: switch.switchone
     service: switch.turn_on
+  - delay: 01:00
+  - data:
+      entity_id: switch.switchone
+    service: switch.turn_off
+- id: '1548515341571'
+  alias: Enchufe baño
+  trigger:
+  - entity_id: switch.switchtwo
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - delay: 00:10:00
+  - data:
+      entity_id: switch.switchtwo
+    service: switch.turn_off
