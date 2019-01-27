@@ -1,10 +1,12 @@
 termo:
   name: "Termo"
+  control: hidden
   entities:
     - "input_number.termo_time"
     - "switch.switchone"
 home:
   name: "Home"
+  control: hidden
   entities:
     - sensor.date
     - sensor.time
