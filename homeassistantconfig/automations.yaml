@@ -96,3 +96,15 @@
       message: "{% if is_state('binary_sensor.maindoor', 'on') %}\n     HOME => Puerta\
         \ abierta\n{% else %}\n     HOME => Puerta cerrada\n{% endif %} \n"
     service: notify.bot_to_grcanosa
+- id: '1548797344389'
+  alias: Switch Baño OFF each 30 min
+  trigger:
+  - hours: ''
+    minutes: '30'
+    platform: time_pattern
+    seconds: ''
+  condition: []
+  action:
+  - data:
+      entity_id: switch.switchtwo
+    service: switch.turn_off
