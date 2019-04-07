@@ -11,3 +11,8 @@ services:
       - /dev/ttyACM0:/dev/ttyACM0
     restart: always
     network_mode: host
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1k"
+        max-file: "3"

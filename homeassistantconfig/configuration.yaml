@@ -50,6 +50,13 @@ logbook:
 # Enables a map showing the location of tracked devices
 map:
 
+recorder:
+  purge_keep_days: 3
+  purge_interval: 1
+  
+logger:
+  default: critical
+
 # Track the sun
 # sun:
 
