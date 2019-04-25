@@ -15,3 +15,6 @@ switch.switchtwo:
   icon: mdi:power-plug
 switch.switchone:
   icon: mdi:power-plug
+binary_sensor.maindoor_xiaomi:
+  device_class: door
+  friendly_name: Main Door Xiaomi

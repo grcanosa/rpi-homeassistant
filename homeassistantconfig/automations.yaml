@@ -77,32 +77,34 @@
   - data:
       entity_id: switch.switchone
     service: switch.turn_off
-- id: '1548543806868'
+- id: '1548543806868_2'
   alias: Notificafion Puerta
   trigger:
-  - entity_id: binary_sensor.maindoor
-    for: 00:00:03
+  - entity_id: binary_sensor.maindoor_xiaomi
+    for: 00:00:01
     from: 'off'
     platform: state
     to: 'on'
-  - entity_id: binary_sensor.maindoor
-    for: 00:00:03
+  - entity_id: binary_sensor.maindoor_xiaomi
+    for: 00:00:01
     from: 'on'
     platform: state
     to: 'off'
   condition: []
   action:
   - data:
-      message: "{% if is_state('binary_sensor.maindoor', 'on') %}\n     HOME => Puerta\
+      message: "{% if is_state('binary_sensor.maindoor_xiaomi', 'on') %}\n     HOMEX => Puerta\
         \ abierta\n{% else %}\n     HOME => Puerta cerrada\n{% endif %} \n"
     service: notify.bot_to_grcanosa
+  - data:
+      message: "{% if is_state('binary_sensor.maindoor_xiaomi', 'on') %}\n     HOMEX => Puerta\
+        \ abierta\n{% else %}\n     HOME => Puerta cerrada\n{% endif %} \n"
+    service: notify.bot_to_sara
 - id: '1548797344389'
   alias: Switch Baño OFF each 30 min
   trigger:
-  - hours: ''
-    minutes: '30'
+  - minutes: '/30'
     platform: time_pattern
-    seconds: ''
   condition: []
   action:
   - data:

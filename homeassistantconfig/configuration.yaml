@@ -14,7 +14,7 @@ homeassistant:
   customize: !include customize.yaml
 
 # Show links to resources in log and frontend
-introduction:
+#introduction:
 
 # Enables the frontend
 frontend:
@@ -55,7 +55,7 @@ recorder:
   purge_interval: 1
   
 logger:
-  default: critical
+  default: info
 
 # Track the sun
 # sun:
@@ -71,7 +71,8 @@ sensor:
 
 # Text to speech
 tts:
-  - platform: google
+  - platform: google_translate
+    service_name: google_say
 
 # Cloud
 cloud:
@@ -100,6 +101,14 @@ notify:
   - name: bot_to_sara
     platform: telegram
     chat_id: !secret sara_chatid
+
+xiaomi_aqara:
+  discovery_retry: 10
+  interface: 192.168.1.108
+  gateways:
+    - key: !secret xiaomikey
+      host: 192.168.1.199
+      mac: !secret xiaomimac
 
 
 input_number:
