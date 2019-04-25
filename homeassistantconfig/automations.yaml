@@ -93,11 +93,11 @@
   condition: []
   action:
   - data:
-      message: "{% if is_state('binary_sensor.maindoor_xiaomi', 'on') %}\n     HOMEX => Puerta\
+      message: "{% if is_state('binary_sensor.maindoor_xiaomi', 'on') %}\n     HOME => Puerta\
         \ abierta\n{% else %}\n     HOME => Puerta cerrada\n{% endif %} \n"
     service: notify.bot_to_grcanosa
   - data:
-      message: "{% if is_state('binary_sensor.maindoor_xiaomi', 'on') %}\n     HOMEX => Puerta\
+      message: "{% if is_state('binary_sensor.maindoor_xiaomi', 'on') %}\n     HOME => Puerta\
         \ abierta\n{% else %}\n     HOME => Puerta cerrada\n{% endif %} \n"
     service: notify.bot_to_sara
 - id: '1548797344389'
