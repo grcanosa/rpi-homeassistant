@@ -19,6 +19,8 @@ homeassistant:
 # Enables the frontend
 frontend:
 
+lovelace:
+
 # Enables configuration UI
 config:
 
