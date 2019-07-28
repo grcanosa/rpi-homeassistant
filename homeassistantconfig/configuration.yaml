@@ -21,6 +21,12 @@ frontend:
 
 lovelace:
 
+
+device_tracker:
+  - platform: nmap_tracker
+    hosts:
+      - 192.168.1.0/24
+
 # Enables configuration UI
 config:
 

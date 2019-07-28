@@ -1,0 +1,18 @@
+version: '3'
+services:
+  homeassistant:
+    container_name: home-assistant
+    image: homeassistant/raspberrypi3-homeassistant:0.92.0
+    volumes:
+      - ./homeassistantconfig:/config
+      - /etc/localtime:/etc/localtime:ro
+      # - ./sslcert:/sslcert
+    devices:
+      - TTYDEVICE:/dev/ttyACM0
+    restart: always
+    network_mode: host
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1k"
+        max-file: "3"
