@@ -35,9 +35,12 @@
   - entity_id: input_number.termo_time
     platform: state
   action:
-  - delay: 00:05:00
-  - entity_id: input_number.termo_time
-    service: input_number.decrement
+  - data:
+      entity_id: script.decrement_termo_time_in_5_min
+    service: script.turn_off
+  - data:
+      entity_id: script.decrement_termo_time_in_5_min
+    service: script.turn_on
 - id: '1548527202535'
   alias: Termo Sensor OFF-ON
   trigger:
@@ -93,17 +96,19 @@
   condition: []
   action:
   - data:
-      message: "{% if is_state('binary_sensor.maindoor_xiaomi', 'on') %}\n     HOME => Puerta\
-        \ abierta\n{% else %}\n     HOME => Puerta cerrada\n{% endif %} \n"
+      message: "{% if is_state('binary_sensor.maindoor_xiaomi', 'on') %}\n     HOME\
+        \ => Puerta abierta\n{% else %}\n     HOME => Puerta cerrada\n{% endif %}\
+        \ \n"
     service: notify.bot_to_grcanosa
   - data:
-      message: "{% if is_state('binary_sensor.maindoor_xiaomi', 'on') %}\n     HOME => Puerta\
-        \ abierta\n{% else %}\n     HOME => Puerta cerrada\n{% endif %} \n"
+      message: "{% if is_state('binary_sensor.maindoor_xiaomi', 'on') %}\n     HOME\
+        \ => Puerta abierta\n{% else %}\n     HOME => Puerta cerrada\n{% endif %}\
+        \ \n"
     service: notify.bot_to_sara
 - id: '1548797344389'
   alias: Switch Baño OFF each 30 min
   trigger:
-  - minutes: '/30'
+  - minutes: /30
     platform: time_pattern
   condition: []
   action:

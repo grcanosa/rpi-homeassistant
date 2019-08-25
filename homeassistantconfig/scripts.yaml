@@ -1,0 +1,7 @@
+decrement_termo_time_in_5_min:
+  alias: decrement_termo_time_in_5_min
+  sequence:
+  - delay: 00:00:10
+  - data:
+      entity_id: input_number.termo_time
+    service: input_number.decrement
