@@ -127,6 +127,7 @@ input_number:
     min: 0
     max: 75
     step: 5
+    unit_of_measurement: min
 
 
 
