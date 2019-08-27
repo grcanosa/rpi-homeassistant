@@ -1,5 +1,5 @@
 decrement_termo_time_in_5_min:
-  alias: decrement_termo_time_in_5_min
+  alias: Decrement Termo Time in 5 min
   sequence:
   - delay: 00:05:00
   - data:
