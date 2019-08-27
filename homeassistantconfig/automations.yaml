@@ -6,16 +6,16 @@
   condition: []
   action:
   - data:
-      entity_id: switch.switchone
+      entity_id: switch.switch_termo
     service: switch.turn_on
   - delay: 01:00
   - data:
-      entity_id: switch.switchone
+      entity_id: switch.switch_termo
     service: switch.turn_off
 - id: '1548515341571'
   alias: Enchufe baño
   trigger:
-  - entity_id: switch.switchtwo
+  - entity_id: switch.switch_bano
     for: 00:08:00
     from: 'off'
     platform: state
@@ -23,11 +23,11 @@
   condition: []
   action:
   - data:
-      entity_id: switch.switchtwo
+      entity_id: switch.switch_bano
     service: switch.turn_off
   - delay: 00:00:30
   - data:
-      entity_id: switch.switchtwo
+      entity_id: switch.switch_bano
     service: switch.turn_off
 - id: termo_input_number
   alias: Termo slider Auto-Decrement
@@ -52,7 +52,7 @@
   condition: []
   action:
   - data:
-      entity_id: switch.switchone
+      entity_id: switch.switch_termo
     service: switch.turn_on
 - id: '1548527264250'
   alias: Termo Sensor ON-OFF
@@ -65,12 +65,12 @@
   condition: []
   action:
   - data:
-      entity_id: switch.switchone
+      entity_id: switch.switch_termo
     service: switch.turn_off
 - id: '1548531355158'
   alias: Termo más de hora y media encendido
   trigger:
-  - entity_id: switch.switchone
+  - entity_id: switch.switch_termo
     for: 01:30:00
     from: 'off'
     platform: state
@@ -78,7 +78,7 @@
   condition: []
   action:
   - data:
-      entity_id: switch.switchone
+      entity_id: switch.switch_termo
     service: switch.turn_off
 - id: '1548543806868_2'
   alias: Notificafion Puerta
@@ -113,5 +113,5 @@
   condition: []
   action:
   - data:
-      entity_id: switch.switchtwo
+      entity_id: switch.switch_bano
     service: switch.turn_off

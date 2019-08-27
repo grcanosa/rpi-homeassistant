@@ -3,7 +3,7 @@ termo:
   control: hidden
   entities:
     - "input_number.termo_time"
-    - "switch.switchone"
+    - "switch.switch_termo"
 home:
   name: "Home"
   control: hidden

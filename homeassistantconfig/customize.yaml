@@ -13,7 +13,7 @@ sensor.neo_coolcam_unknown_type_0200_id_1027_power:
   friendly_name: Switch Baño Power
 switch.switchtwo:
   icon: mdi:power-plug
-switch.switchone:
+switch.switch_termo:
   icon: mdi:power-plug
 binary_sensor.maindoor_xiaomi:
   device_class: door
