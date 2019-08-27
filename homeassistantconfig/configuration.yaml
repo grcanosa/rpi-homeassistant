@@ -93,7 +93,7 @@ script: !include scripts.yaml
 
 zwave:
   usb_path: /dev/ttyACM0
-#  device_config: !include zwave_device_config.yaml
+  device_config: !include zwave_device_config.yaml
 #  network_key: "0x2e, 0xcc, 0xab, 0x0b, 0xa3, 0x0a, 0x0e, 0xb5, 0x70, 0x71, 0x2d, 0xb4, 0x25, 0x43, 0xee, 0x0c"
 
 telegram_bot:
