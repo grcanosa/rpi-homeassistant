@@ -115,3 +115,17 @@
   - data:
       entity_id: switch.switch_bano
     service: switch.turn_off
+- id: '1567972340401'
+  alias: Termo ON 14.00
+  trigger:
+  - at: '14:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: switch.switch_termo
+    service: switch.turn_on
+  - delay: 01:00
+  - data:
+      entity_id: switch.switch_termo
+    service: switch.turn_off

@@ -73,3 +73,6 @@ sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_sourcenodeid_5:
 sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_alarm_level_3:
   ignored: true
   polling_intensity: 0
+sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_sourcenodeid_4:
+  ignored: true
+  polling_intensity: 0
