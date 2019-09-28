@@ -10,3 +10,38 @@ home:
   entities:
     - sensor.date
     - sensor.time
+zigbee:
+  name: Zigbee
+  control: hidden
+  entities:
+    - input_select.zigbee2mqtt_log_level
+    - input_text.zigbee2mqtt_new_name
+    - input_text.zigbee2mqtt_old_name
+    - input_text.zigbee2mqtt_remove
+    - script.zigbee2mqtt_remove
+    - script.zigbee2mqtt_rename
+    - sensor.coordinator_version
+    - sensor.zigbee2mqtt_bridge_state
+    - sensor.zigbee2mqtt_version
+    - switch.zigbee2mqtt_main_join
+    - timer.zigbee_permit_join
+zigbee_sensors_stats:
+  name: Zigbee Sensor Stats
+  control: hidden
+  entities:
+    - sensor.main_door_linkquality
+    - sensor.main_door_battery
+    - sensor.button1_battery
+    - sensor.button1_linkquality
+zwave_power:
+  name: ZWave Power
+  control: hidden
+  entities: 
+    - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_energy
+    - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_power
+    - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_voltage
+    - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_current
+    - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_energy_2
+    - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_power_2
+    - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_voltage_2
+    - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_current_2
