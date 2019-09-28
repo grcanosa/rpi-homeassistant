@@ -16,3 +16,29 @@ services:
       options:
         max-size: "1k"
         max-file: "3"
+  zigbee2mqtt:
+    container_name: zigbee2mqtt
+    image: koenkk/zigbee2mqtt:arm32v6
+    volumes:
+      - ./zigbee2mqtt/data/:/app/data
+      - ./zigbee2mqtt/zigbee-shepherd-converters/:/app/node_modules/zigbee-shepherd-converters/
+      - ./zigbee2mqtt/lib/extension/homeassistant.js:/app/lib/extension/homeassistant.js
+    devices:
+      # CC251
+      - /dev/ttyACM0:/dev/ttyACM0
+      # CC2530 / GBAN GB2530S
+      #- /dev/ttyUSB_cc2530:/dev/ttyACM0
+    #restart: always
+    network_mode: host
+    environment:
+      - TZ=Europe/Amsterdam
+  mosquitto:
+    container_name: mosquitto
+    image: eclipse-mosquitto
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    network_mode: host
+    volumes:
+      - "./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf"
+      - "./mosquitto/data:/mosquitto/data"

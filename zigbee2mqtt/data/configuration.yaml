@@ -1,0 +1,13 @@
+homeassistant: true
+permit_join: true
+mqtt:
+  base_topic: zigbee2mqtt
+  server: 'mqtt://localhost:1883'
+serial:
+  port: /dev/ttyACM0
+devices:
+  '0x00158d0003f4772c':
+    friendly_name: 'movimiento_puerta_cocina'
+    retain: false
+    occupancy_timeout: 61
+    no_occupancy_since: [62]
