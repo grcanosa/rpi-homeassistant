@@ -152,4 +152,4 @@
         == "double" %} ¡Te quiero! {% elif trigger.to_state.state == "triple" %} ¡Te
         quiero mucho! {% elif trigger.to_state.state == "quadruple" %} ¿Quieres tema?
         {% elif trigger.to_state.state == "long_release" %} Te quiero {{ trigger.to_state.attributes.duration }} millones. {% else %}{% endif %}'
-    service: notify.bot_to_grcanosa
+    service: notify.bot_to_sara
