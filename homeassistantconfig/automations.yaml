@@ -83,12 +83,12 @@
 - id: '1548543806868_2'
   alias: Notificafion Puerta
   trigger:
-  - entity_id: binary_sensor.maindoor_xiaomi
+  - entity_id: binary_sensor.main_door
     for: 00:00:01
     from: 'off'
     platform: state
     to: 'on'
-  - entity_id: binary_sensor.maindoor_xiaomi
+  - entity_id: binary_sensor.main_door
     for: 00:00:01
     from: 'on'
     platform: state
@@ -96,14 +96,12 @@
   condition: []
   action:
   - data:
-      message: "{% if is_state('binary_sensor.maindoor_xiaomi', 'on') %}\n     HOME\
-        \ => Puerta abierta\n{% else %}\n     HOME => Puerta cerrada\n{% endif %}\
-        \ \n"
+      message: "{% if is_state('binary_sensor.main_door', 'on') %}\n     HOME => Puerta\
+        \ abierta\n{% else %}\n     HOME => Puerta cerrada\n{% endif %} \n"
     service: notify.bot_to_grcanosa
   - data:
-      message: "{% if is_state('binary_sensor.maindoor_xiaomi', 'on') %}\n     HOME\
-        \ => Puerta abierta\n{% else %}\n     HOME => Puerta cerrada\n{% endif %}\
-        \ \n"
+      message: "{% if is_state('binary_sensor.main_door', 'on') %}\n     HOME => Puerta\
+        \ abierta\n{% else %}\n     HOME => Puerta cerrada\n{% endif %} \n"
     service: notify.bot_to_sara
 - id: '1548797344389'
   alias: Switch Baño OFF each 30 min
@@ -129,3 +127,29 @@
   - data:
       entity_id: switch.switch_termo
     service: switch.turn_off
+- id: '1569690957862'
+  alias: Mensajes para Sara
+  trigger:
+  - entity_id: sensor.zigbee_button
+    platform: state
+    to: single
+  - entity_id: sensor.zigbee_button
+    platform: state
+    to: double
+  - entity_id: sensor.zigbee_button
+    platform: state
+    to: triple
+  - entity_id: sensor.zigbee_button
+    platform: state
+    to: quadruple
+  - entity_id: sensor.zigbee_button
+    platform: state
+    to: long_release
+  condition: []
+  action:
+  - data_template:
+      message: '{%if trigger.to_state.state == "single" %} ¡Guapa!  {% elif trigger.to_state.state
+        == "double" %} ¡Te quiero! {% elif trigger.to_state.state == "triple" %} ¡Te
+        quiero mucho! {% elif trigger.to_state.state == "quadruple" %} ¿Quieres tema?
+        {% elif trigger.to_state.state == "long_release" %} Te quiero {{ trigger.to_state.attributes.duration }} millones. {% else %}{% endif %}'
+    service: notify.bot_to_grcanosa

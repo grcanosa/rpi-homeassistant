@@ -18,14 +18,14 @@ services:
         max-file: "3"
   zigbee2mqtt:
     container_name: zigbee2mqtt
-    image: koenkk/zigbee2mqtt:arm32v6
+    image: koenkk/zigbee2mqtt
     volumes:
       - ./zigbee2mqtt/data/:/app/data
       - ./zigbee2mqtt/zigbee-shepherd-converters/:/app/node_modules/zigbee-shepherd-converters/
       - ./zigbee2mqtt/lib/extension/homeassistant.js:/app/lib/extension/homeassistant.js
     devices:
       # CC251
-      - /dev/ttyACM0:/dev/ttyACM0
+      - /dev/ttyACM1:/dev/ttyACM0
       # CC2530 / GBAN GB2530S
       #- /dev/ttyUSB_cc2530:/dev/ttyACM0
     #restart: always

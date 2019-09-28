@@ -12,6 +12,9 @@ homeassistant:
   time_zone: Europe/Madrid
   # Customization file
   customize: !include customize.yaml
+  packages:
+    zigbee2mqtt: !include zigbee2mqtt.yaml
+
 
 # Show links to resources in log and frontend
 #introduction:
@@ -120,13 +123,23 @@ notify:
     platform: telegram
     chat_id: !secret sara_chatid
 
-xiaomi_aqara:
-  discovery_retry: 10
-  interface: 192.168.1.201
-  gateways:
-    - key: !secret xiaomikey
-      host: 192.168.1.199
-      mac: !secret xiaomimac
+#xiaomi_aqara:
+#  discovery_retry: 10
+#  interface: 192.168.1.201
+#  gateways:
+#    - key: !secret xiaomikey
+#      host: 192.168.1.199
+#      mac: !secret xiaomimac
+
+mqtt:
+  discovery: true
+  broker: localhost  # Remove if you want to use builtin-in MQTT broker
+  birth_message:
+    topic: 'hass/status'
+    payload: 'online'
+  will_message:
+    topic: 'hass/status'
+    payload: 'offline'
 
 
 input_number:
