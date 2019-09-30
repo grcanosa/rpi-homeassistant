@@ -16,10 +16,10 @@ homeassistant:
     zigbee2mqtt: !include zigbee2mqtt.yaml
 
 
-http:
-  base_url: https://home.grcanosa.com
-  use_x_forwarded_for: true
-  trusted_proxies: nginx
+#http:
+#  base_url: https://home.grcanosa.com
+#  use_x_forwarded_for: true
+#  trusted_proxies: nginx
 
 # Show links to resources in log and frontend
 #introduction:
@@ -157,7 +157,7 @@ notify:
 
 mqtt:
   discovery: true
-  broker: localhost  # Remove if you want to use builtin-in MQTT broker
+  broker: mosquitto  # Remove if you want to use builtin-in MQTT broker
   birth_message:
     topic: 'hass/status'
     payload: 'online'
