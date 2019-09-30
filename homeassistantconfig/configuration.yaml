@@ -16,6 +16,11 @@ homeassistant:
     zigbee2mqtt: !include zigbee2mqtt.yaml
 
 
+http:
+  base_url: https://home.grcanosa.com
+  use_x_forwarded_for: true
+  trusted_proxies: 
+
 # Show links to resources in log and frontend
 #introduction:
 

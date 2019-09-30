@@ -9,9 +9,11 @@ services:
       - ./nginx/grcanosa.com.crt:/etc/nginx/grcanosa.com.crt 
       - ./nginx/grcanosa.com.key:/etc/nginx/grcanosa.com.key 
       - ./nginx/logs/:/etc/nginx/logs/
+      - ./nginx/.htpasswd:/etc/nginx/.htpasswd
     ports:
       - "8089:80"
       - "443:443"
+    command: [nginx-debug, '-g', 'daemon off;']
 networks:
   default:
     external:

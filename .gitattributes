@@ -3,3 +3,4 @@ homeassistantconfig/secrets.yaml filter=crypt diff=crypt
 zigbee2mqtt/data/database.db   filter=crypt diff=crypt
 nginx/grcanosa.com.crt filter=crypt diff=crypt
 nginx/grcanosa.com.key filter=crypt diff=crypt
+nginx/ssl/*.pem    filter=crypt diff=crypt
