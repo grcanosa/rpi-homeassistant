@@ -13,8 +13,8 @@ devices:
     no_occupancy_since:
       - 62
   '0x00158d0002a1b150':
-    friendly_name: '0x00158d0002a1b150'
+    friendly_name: 'main_door'
     retain: false
   '0x00158d0002f979cd':
-    friendly_name: '0x00158d0002f979cd'
+    friendly_name: 'button1'
     retain: false

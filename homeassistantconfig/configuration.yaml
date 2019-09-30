@@ -24,6 +24,17 @@ frontend:
 
 lovelace:
 
+transmission:
+  host: 192.168.1.200
+  username: !secret transmission_username
+  password: !secret transmission_password
+  monitored_conditions:
+    - download_speed
+    - upload_speed
+    - active_torrents
+    - total_torrents
+
+speedtestdotnet:
 
 #device_tracker:
 #  - platform: nmap_tracker
@@ -77,6 +88,14 @@ sensor:
     display_options:
       - 'date'
       - 'time'
+  - platform: mqtt
+    name: Zigbee2mqtt Networkmap
+    # if you change base_topic of Zigbee2mqtt, change state_topic accordingly
+    state_topic: zigbee2mqtt/bridge/networkmap/raw
+    value_template: >-
+      {{ now().strftime('%Y-%m-%d %H:%M:%S') }}
+    # again, if you change base_topic of Zigbee2mqtt, change json_attributes_topic accordingly
+    json_attributes_topic: zigbee2mqtt/bridge/networkmap/raw
   # Weather prediction
   # - platform: yr
 

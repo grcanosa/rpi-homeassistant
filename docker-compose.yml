@@ -8,7 +8,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       # - ./sslcert:/sslcert
     devices:
-      - /dev/ttyACM0:/dev/ttyACM0
+      - /dev/ttyACM2:/dev/ttyACM0
     restart: always
     network_mode: host
     logging:
@@ -42,3 +42,21 @@ services:
     volumes:
       - "./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf"
       - "./mosquitto/data:/mosquitto/data"
+  calibre-web:
+    image: linuxserver/calibre-web
+    container_name: calibre-web
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - DOCKER_MODS=linuxserver/calibre-web:calibre
+    volumes:
+      - ./calibre-web/:/config
+      - /mnt/DATA/libros/:/books
+    ports:
+      - "8083:8083"
+    restart: unless-stopped  
+networks:
+  default:
+    external:
+      name: nginx_network
