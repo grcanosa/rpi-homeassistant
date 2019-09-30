@@ -19,7 +19,7 @@ homeassistant:
 http:
   base_url: https://home.grcanosa.com
   use_x_forwarded_for: true
-  trusted_proxies: 
+  trusted_proxies: nginx
 
 # Show links to resources in log and frontend
 #introduction:

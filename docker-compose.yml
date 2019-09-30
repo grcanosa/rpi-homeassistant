@@ -10,7 +10,7 @@ services:
     devices:
       - /dev/ttyACM2:/dev/ttyACM0
     restart: always
-    network_mode: host
+    #network_mode: host
     logging:
       driver: "json-file"
       options:
