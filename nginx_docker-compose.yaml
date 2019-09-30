@@ -8,6 +8,7 @@ services:
       - ./nginx/site:/usr/share/nginx/html/
       - ./nginx/grcanosa.com.crt:/etc/nginx/grcanosa.com.crt 
       - ./nginx/grcanosa.com.key:/etc/nginx/grcanosa.com.key 
+      - ./nginx/logs/:/etc/nginx/logs/
     ports:
       - "8089:80"
       - "443:443"
