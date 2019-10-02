@@ -58,26 +58,26 @@ services:
     ports:
       - "8083:8083"
     restart: unless-stopped  
-  nginx:
-    image: nginx
-    container_name: nginx
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./nginx/site:/usr/share/nginx/html/
-      - ./nginx/ssl/:/etc/nginx/ssl/
-      - ./nginx/logs/:/etc/nginx/logs/
-      - ./nginx/.htpasswd:/etc/nginx/.htpasswd
-      - ./certbot/conf:/etc/letsencrypt
-      - ./certbot/www:/var/www/certbot
-    ports:
-      - "8089:80"
-      - "443:443"
-    command: [nginx-debug, '-g', 'daemon off;']
-  certbot:
-    image: certbot/certbot
-    volumes:
-  - ./certbot/conf:/etc/letsencrypt
-  - ./certbot/www:/var/www/certbot
+  # nginx:
+  #   image: nginx
+  #   container_name: nginx
+  #   volumes:
+  #     - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+  #     - ./nginx/site:/usr/share/nginx/html/
+  #     - ./nginx/ssl/:/etc/nginx/ssl/
+  #     - ./nginx/logs/:/etc/nginx/logs/
+  #     - ./nginx/.htpasswd:/etc/nginx/.htpasswd
+  #     - ./certbot/conf:/etc/letsencrypt
+  #     - ./certbot/www:/var/www/certbot
+  #   ports:
+  #     - "8089:80"
+  #     - "443:443"
+  #   command: [nginx-debug, '-g', 'daemon off;']
+  # certbot:
+  #   image: certbot/certbot
+  #   volumes:
+  #     - ./certbot/conf:/etc/letsencrypt
+  #     - ./certbot/www:/var/www/certbot
 networks:
   default:
     external:
