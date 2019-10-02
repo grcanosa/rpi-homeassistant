@@ -44,6 +44,9 @@ echo "### Starting nginx ..."
 docker-compose -f $DOCKER_COMPOSE_FILE up --force-recreate -d nginx
 echo
 
+echo "Nginx should be running"
+read -n 1
+
 echo "### Deleting dummy certificate for $domains ..."
 docker-compose -f $DOCKER_COMPOSE_FILE run --rm --entrypoint "\
   rm -Rf /etc/letsencrypt/live/$domains && \
@@ -58,7 +61,7 @@ domain_args=""
 for domain in "${domains[@]}"; do
   domain_args="$domain_args -d $domain"
 done
-
+echo "DOMAIN ARGS: $domain_args"
 # Select appropriate email arg
 case "$email" in
   "") email_arg="--register-unsafely-without-email" ;;
