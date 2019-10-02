@@ -54,6 +54,8 @@ docker-compose -f $DOCKER_COMPOSE_FILE run --rm --entrypoint "\
   rm -Rf /etc/letsencrypt/renewal/$domains.conf" certbot
 echo
 
+echo "Certificates should not exist"
+read -n 1
 
 echo "### Requesting Let's Encrypt certificate for $domains ..."
 #Join $domains to -d args
@@ -71,6 +73,8 @@ esac
 # Enable staging mode if needed
 if [ $staging != "0" ]; then staging_arg="--staging"; fi
 
+#read -n 1
+echo "testting" > ./certbot/www/test.txt
 docker-compose -f $DOCKER_COMPOSE_FILE run --rm --entrypoint "\
   certbot certonly --webroot -w /var/www/certbot \
     $staging_arg \
@@ -81,5 +85,7 @@ docker-compose -f $DOCKER_COMPOSE_FILE run --rm --entrypoint "\
     --force-renewal" certbot
 echo
 
+echo "Certificates downloaded"
+read -n 1
 echo "### Reloading nginx ..."
 docker-compose -f $DOCKER_COMPOSE_FILE exec nginx nginx -s reload
