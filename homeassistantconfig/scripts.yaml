@@ -5,3 +5,6 @@ decrement_termo_time_in_5_min:
   - data:
       entity_id: input_number.termo_time
     service: input_number.decrement
+  - data:
+      entity_id: switch.switch_termo
+    service: switch.turn_on

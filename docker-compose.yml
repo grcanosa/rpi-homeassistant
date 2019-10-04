@@ -43,6 +43,7 @@ services:
     #network_mode: host
     volumes:
       - "./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf"
+      - "./mosquitto/my_conf/:/etc/mosquitto_conf/"
       - "./mosquitto/data:/mosquitto/data"
   calibre-web:
     image: linuxserver/calibre-web

@@ -1,5 +1,5 @@
 homeassistant: true
-permit_join: true
+permit_join: false
 mqtt:
   base_topic: zigbee2mqtt
   server: 'mqtt://mosquitto:1883'
@@ -13,8 +13,14 @@ devices:
     no_occupancy_since:
       - 62
   '0x00158d0002a1b150':
-    friendly_name: 'main_door'
+    friendly_name: main_door
     retain: false
   '0x00158d0002f979cd':
-    friendly_name: 'button1'
+    friendly_name: button1
+    retain: false
+  '0x00158d00036172f8':
+    friendly_name: switchbano
+    retain: false
+  '0x7cb03eaa0a066c51':
+    friendly_name: 'switchtermo'
     retain: false
