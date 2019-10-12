@@ -6,13 +6,9 @@ services:
     volumes:
       - ./homeassistantconfig:/config
       - /etc/localtime:/etc/localtime:ro
-      # - ./sslcert:/sslcert
-    devices:
-      - /dev/ttyACM2:/dev/ttyACM0
     restart: always
     ports:
       - "8123:8123"
-    #network_mode: host
     logging:
       driver: "json-file"
       options:
@@ -30,8 +26,7 @@ services:
       - /dev/ttyACM1:/dev/ttyACM0
       # CC2530 / GBAN GB2530S
       #- /dev/ttyUSB_cc2530:/dev/ttyACM0
-    #restart: always
-    #network_mode: host
+    restart: always
     environment:
       - TZ=Europe/Amsterdam
   mosquitto:
@@ -40,13 +35,14 @@ services:
     ports:
       - "1883:1883"
       - "9001:9001"
-    #network_mode: host
+    restart: always
     volumes:
       - "./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf"
       - "./mosquitto/my_conf/:/etc/mosquitto_conf/"
       - "./mosquitto/data:/mosquitto/data"
   calibre-web:
     image: linuxserver/calibre-web
+    restart: always
     container_name: calibre-web
     environment:
       - PUID=1000
@@ -58,7 +54,16 @@ services:
       - /mnt/DATA/libros/:/books
     ports:
       - "8083:8083"
-    restart: unless-stopped  
+  portainer:
+    image: portainer/portainer
+    container_name: portainer
+    command: -H unix:///var/run/docker.sock
+    ports:
+      - 9000:9000
+      - 8000:8000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
   nginx:
     image: nginx
     container_name: nginx
@@ -75,6 +80,7 @@ services:
       - "443:443"
     #command: [nginx-debug, '-g', 'daemon off;']
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    restart: always
   certbot:
     image: certbot/certbot
     container_name: certbot
@@ -82,6 +88,7 @@ services:
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/www:/var/www/certbot
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    restart: always
 networks:
   default:
     external:

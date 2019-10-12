@@ -4,3 +4,12 @@ zigbee2mqtt/zigbee-shepherd-converters/
 zigbee2mqtt/lib/extension/homeassistant.js
 *.db
 *.log
+homeassistantconfig/.storage/
+homeassistantconfig/.uuid
+homeassistantconfig/.HA_VERSION
+homeassistantconfig/OZW_Log.txt
+homeassistantconfig/pyozw.sqlite
+*.pid
+zigbee2mqtt/data/log/
+zigbee2mqtt/data/state.json
+calibre-web/client_secrets.json
