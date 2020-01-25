@@ -8,3 +8,6 @@ decrement_termo_time_in_5_min:
   - data:
       entity_id: switch.switch_termo
     service: switch.turn_on
+# switch_termo_off:
+#   alias: Switch Termo Off
+  

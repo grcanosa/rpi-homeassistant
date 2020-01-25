@@ -23,7 +23,7 @@ services:
       - ./zigbee2mqtt/lib/extension/homeassistant.js:/app/lib/extension/homeassistant.js
     devices:
       # CC251
-      - /dev/ttyACM1:/dev/ttyACM0
+      - /dev/ttyACM0:/dev/ttyACM0
       # CC2530 / GBAN GB2530S
       #- /dev/ttyUSB_cc2530:/dev/ttyACM0
     restart: always

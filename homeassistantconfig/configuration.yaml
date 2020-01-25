@@ -84,6 +84,8 @@ recorder:
 logger:
   default: info
 
+
+
 # Track the sun
 # sun:
 
@@ -138,6 +140,7 @@ telegram_bot:
     allowed_chat_ids:
       - !secret grcanosa_chatid
       - !secret sara_chatid
+      - !secret miguel_chatid
 
 notify:
   - name: bot_to_grcanosa
@@ -146,7 +149,9 @@ notify:
   - name: bot_to_sara
     platform: telegram
     chat_id: !secret sara_chatid
-
+  - name: bot_to_miguel
+    platform: telegram
+    chat_id: !secret miguel_chatid
 #xiaomi_aqara:
 #  discovery_retry: 10
 #  interface: 192.168.1.201

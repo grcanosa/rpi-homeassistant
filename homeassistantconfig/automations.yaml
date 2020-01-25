@@ -103,6 +103,10 @@
       message: "{% if is_state('binary_sensor.main_door', 'on') %}\n     HOME => Puerta\
         \ abierta\n{% else %}\n     HOME => Puerta cerrada\n{% endif %} \n"
     service: notify.bot_to_sara
+#  - data:
+#      message: "{% if is_state('binary_sensor.main_door', 'on') %}\n     HOME => Puerta\
+#        \ abierta\n{% else %}\n     HOME => Puerta cerrada\n{% endif %} \n"
+#    service: notify.bot_to_miguel
 - id: '1548797344389'
   alias: Switch Baño OFF each 30 min
   trigger:
@@ -151,5 +155,36 @@
       message: '{%if trigger.to_state.state == "single" %} ¡Guapa!  {% elif trigger.to_state.state
         == "double" %} ¡Te quiero! {% elif trigger.to_state.state == "triple" %} ¡Te
         quiero mucho! {% elif trigger.to_state.state == "quadruple" %} ¿Quieres tema?
-        {% elif trigger.to_state.state == "long_release" %} Te quiero {{ trigger.to_state.attributes.duration }} millones. {% else %}{% endif %}'
+        {% elif trigger.to_state.state == "long_release" %} Te quiero {{ trigger.to_state.attributes.duration
+        }} millones. {% else %}{% endif %}'
     service: notify.bot_to_sara
+- id: '1575486987531'
+  alias: Luz Noche
+  trigger:
+  - at: '21:05'
+    platform: time
+  - event: sunset
+    offset: 02:00
+    platform: sun
+  condition: []
+  action:
+  - device_id: 814253b9951d44c79944fef2bdd0c9aa
+    domain: switch
+    entity_id: switch.switch_bano
+    type: turn_on
+  - delay: '{{ (range(1,2)|random|int) }}:{{ (range(30, 59)|random|int) }}:00'
+  - device_id: 814253b9951d44c79944fef2bdd0c9aa
+    domain: switch
+    entity_id: switch.switch_bano
+    type: turn_off
+- id: '1575487931483'
+  alias: Apagar enchufe luz por la noche
+  trigger:
+  - at: 01:00
+    platform: time
+  condition: []
+  action:
+  - device_id: 814253b9951d44c79944fef2bdd0c9aa
+    domain: switch
+    entity_id: switch.switch_bano
+    type: turn_off
