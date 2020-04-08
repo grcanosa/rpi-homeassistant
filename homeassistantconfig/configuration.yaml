@@ -41,6 +41,7 @@ transmission:
 
 speedtestdotnet:
 
+python_script:
 #device_tracker:
 #  - platform: nmap_tracker
 #    hosts:

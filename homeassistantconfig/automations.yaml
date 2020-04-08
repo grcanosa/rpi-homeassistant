@@ -1,3 +1,20 @@
+#- id: '1234567895555'
+#  alias: 'Termo ON 15:00 on wednesday'
+# trigger:
+#  - at: 15:00
+#    platform: time
+#  condition:
+#  - condition: time
+#    weekday:
+#     - wed
+#  action:
+#   - data:
+#       entity_id: switch.switch_termo
+#     service: switch.turn_on
+#   - delay: 01:00
+#   - data:
+#       entity_id: switch.switch_termo
+#     service: switch.turn_off     
 - id: '1548503190225'
   alias: Termo ON 05:00
   trigger:
@@ -38,6 +55,7 @@
   - data:
       entity_id: script.decrement_termo_time_in_5_min
     service: script.turn_off
+  - delay: 00:00:05  
   - data:
       entity_id: script.decrement_termo_time_in_5_min
     service: script.turn_on
@@ -131,6 +149,16 @@
   - data:
       entity_id: switch.switch_termo
     service: switch.turn_off
+- id: '1599999999999'
+  alias: Cubo
+  trigger:
+  - entity_id: sensor.cubo_action
+    platform: state
+  action:
+  - service: python_script.cubo        
+    data_template:
+      full:  '{{ trigger.to_state }}'
+    
 - id: '1569690957862'
   alias: Mensajes para Sara
   trigger:

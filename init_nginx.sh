@@ -7,7 +7,7 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(libros.grcanosa.com home.grcanosa.com)
+domains=(libros.grcanosa.com home.grcanosa.com ci.grcanosa.com)
 rsa_key_size=4096
 data_path="./certbot"
 email="grcanosa@gmail.com" # Adding a valid address is strongly recommended

@@ -5,6 +5,10 @@ mqtt:
   server: 'mqtt://mosquitto:1883'
 serial:
   port: /dev/ttyACM0
+advanced:
+  report: true
+
+
 devices:
   '0x00158d0003f4772c':
     friendly_name: movimiento_puerta_cocina
@@ -22,5 +26,11 @@ devices:
     friendly_name: switchbano
     retain: false
   '0x7cb03eaa0a066c51':
-    friendly_name: 'switchtermo'
+    friendly_name: switchtermo
+    retain: false
+  '0x680ae2fffeb15341':
+    friendly_name: luzventana
+    retain: false
+  '0x00158d0002a3743c':
+    friendly_name: 'cube'
     retain: false

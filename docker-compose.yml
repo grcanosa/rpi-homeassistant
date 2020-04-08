@@ -89,6 +89,17 @@ services:
       - ./certbot/www:/var/www/certbot
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
     restart: always
+  jenkinsci:
+    image: jenkinsci-did
+    container_name: jenkinsci
+    volumes:
+      - jenkinsdir:/var/jenkins_home
+      - /var/run/docker2.sock:/var/run/docker.sock
+    ports:
+      - "8888:8080"  
+    restart: always
+volumes:
+  jenkinsdir:
 networks:
   default:
     external:
