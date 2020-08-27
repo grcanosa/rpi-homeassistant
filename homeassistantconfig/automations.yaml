@@ -1,20 +1,3 @@
-#- id: '1234567895555'
-#  alias: 'Termo ON 15:00 on wednesday'
-# trigger:
-#  - at: 15:00
-#    platform: time
-#  condition:
-#  - condition: time
-#    weekday:
-#     - wed
-#  action:
-#   - data:
-#       entity_id: switch.switch_termo
-#     service: switch.turn_on
-#   - delay: 01:00
-#   - data:
-#       entity_id: switch.switch_termo
-#     service: switch.turn_off     
 - id: '1548503190225'
   alias: Termo ON 05:00
   trigger:
@@ -55,38 +38,12 @@
   - data:
       entity_id: script.decrement_termo_time_in_5_min
     service: script.turn_off
-  - delay: 00:00:05  
+  - delay: 00:00:05
   - data:
       entity_id: script.decrement_termo_time_in_5_min
     service: script.turn_on
-- id: '1548527202535'
-  alias: Termo Sensor OFF-ON
-  trigger:
-  - entity_id: binary_sensor.termo_on
-    for: 00:00:10
-    from: 'off'
-    platform: state
-    to: 'on'
-  condition: []
-  action:
-  - data:
-      entity_id: switch.switch_termo
-    service: switch.turn_on
-- id: '1548527264250'
-  alias: Termo Sensor ON-OFF
-  trigger:
-  - entity_id: binary_sensor.termo_on
-    for: 00:00:05
-    from: 'on'
-    platform: state
-    to: 'off'
-  condition: []
-  action:
-  - data:
-      entity_id: switch.switch_termo
-    service: switch.turn_off
 - id: '1548531355158'
-  alias: Termo más de hora y media encendido
+  alias: 'Termo: apagar si está más de hora y media encendido'
   trigger:
   - entity_id: switch.switch_termo
     for: 01:30:00
@@ -98,6 +55,7 @@
   - data:
       entity_id: switch.switch_termo
     service: switch.turn_off
+  mode: single
 - id: '1548543806868_2'
   alias: Notificafion Puerta
   trigger:
@@ -121,10 +79,6 @@
       message: "{% if is_state('binary_sensor.main_door', 'on') %}\n     HOME => Puerta\
         \ abierta\n{% else %}\n     HOME => Puerta cerrada\n{% endif %} \n"
     service: notify.bot_to_sara
-#  - data:
-#      message: "{% if is_state('binary_sensor.main_door', 'on') %}\n     HOME => Puerta\
-#        \ abierta\n{% else %}\n     HOME => Puerta cerrada\n{% endif %} \n"
-#    service: notify.bot_to_miguel
 - id: '1548797344389'
   alias: Switch Baño OFF each 30 min
   trigger:
@@ -155,10 +109,9 @@
   - entity_id: sensor.cubo_action
     platform: state
   action:
-  - service: python_script.cubo        
+  - service: python_script.cubo
     data_template:
-      full:  '{{ trigger.to_state }}'
-    
+      full: '{{ trigger.to_state }}'
 - id: '1569690957862'
   alias: Mensajes para Sara
   trigger:
@@ -216,3 +169,55 @@
     domain: switch
     entity_id: switch.switch_bano
     type: turn_off
+- id: '1598532774319'
+  alias: 'Termo: When slider changes, turn on and call timer'
+  description: ''
+  trigger:
+  - entity_id: input_number.termo_time
+    platform: state
+  condition:
+  - above: '0'
+    condition: numeric_state
+    entity_id: input_number.termo_time
+  action:
+  - data: {}
+    entity_id: timer.termo
+    service: timer.cancel
+  - data: {}
+    entity_id: switch.switch_termo
+    service: switch.turn_on
+  - data: {}
+    entity_id: timer.termo
+    service: timer.start
+  mode: single
+- id: '1598533503796'
+  alias: 'Termo: Decrement slider when timer finishes'
+  description: ''
+  trigger:
+  - event_data:
+      entity_id: timer.termo
+    event_type: timer.finished
+    platform: event
+  condition: []
+  action:
+  - data: {}
+    entity_id: input_number.termo_time
+    service: input_number.decrement
+  mode: single
+- id: '1598533557732'
+  alias: 'Termo: Off if slider gets to 0'
+  description: ''
+  trigger:
+  - entity_id: input_number.termo_time
+    for: 00:00:01
+    platform: state
+    to: '0.0'
+  condition: []
+  action:
+  - data: {}
+    entity_id: switch.switch_termo
+    service: switch.turn_off
+  - data: {}
+    entity_id: timer.termo
+    service: timer.cancel
+  mode: single

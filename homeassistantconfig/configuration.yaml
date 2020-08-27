@@ -33,11 +33,11 @@ transmission:
   host: 192.168.10.200
   username: !secret transmission_username
   password: !secret transmission_password
-  monitored_conditions:
-    - download_speed
-    - upload_speed
-    - active_torrents
-    - total_torrents
+  #onitored_conditions:
+  #  - download_speed
+  #  - upload_speed
+  #  - active_torrents
+  #  - total_torrents
 
 speedtestdotnet:
 
@@ -119,14 +119,14 @@ group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 
-weblink:
-  entities:
-    - name: Router
-      url: http://192.168.10.1
-    - name: Mongo
-      url: http://192.168.10.200:7776
-    - name: Transmission
-      url: http://192.168.10.200:9091
+#weblink:
+#  entities:
+#    - name: Router
+#      url: http://192.168.10.1
+#    - name: Mongo
+#      url: http://192.168.10.200:7776
+#    - name: Transmission
+#      url: http://192.168.10.200:9091
     
 
 
@@ -182,12 +182,7 @@ input_number:
     step: 5
     unit_of_measurement: min
 
-
-
-binary_sensor:
-  - platform: template
-    sensors:
-      termo_on:
-        friendly_name: "Termo should be ON"
-        value_template: >-
-          {{ states.input_number.termo_time.state | int > 0 }}
+          
+timer:
+  termo:
+    duration: "00:05:00"          
