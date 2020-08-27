@@ -28,7 +28,15 @@ homeassistant:
 frontend:
 
 lovelace:
-
+  mode: storage
+  dashboards:
+    lovelace-yaml:
+      mode: yaml
+      title: "YAML"
+      icon: mdi:script
+      show_in_sidebar: true
+      filename: lovelace.yaml
+      
 transmission:
   host: 192.168.10.200
   username: !secret transmission_username

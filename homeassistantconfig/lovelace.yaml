@@ -1,0 +1,119 @@
+title: Casa
+views:
+  - badges:
+      - entity: binary_sensor.updater
+      - entity: binary_sensor.main_door
+      - entity: sensor.switchtermo_power
+    cards:
+      - entities:
+          - input_number.termo_time
+          - switch.switch_termo
+        show_header_toggle: false
+        title: Termo
+        state_color: true
+        type: entities
+      - entities:
+          - entity: light.0x680ae2fffeb15341_light
+          - entity: switch.switch_bano
+        title: OnOff
+        show_header_toggle: false
+        type: entities
+        state_color: true
+      - entities:
+          - name: Router
+            type: weblink
+            url: 'http://192.168.10.1'
+          - name: Mongo
+            type: weblink
+            url: 'http://192.168.10.200:7776'
+          - name: Transmission
+            type: weblink
+            url: 'http://192.168.10.200:9091'
+          - name: Calibre web
+            type: weblink
+            url: 'http://192.168.10.200:8083'
+          - name: Portainer
+            type: weblink
+            url: 'http://192.168.10.200:9000'
+          - name: NetGear Switch
+            type: weblink
+            url: 'http://192.168.10.101/'
+          - name: ZTE Router Despacho
+            type: weblink
+            url: 'http://192.168.10.3/'
+        title: Enlace web
+        type: entities
+      - entities:
+          - entity: automation.termo_on_05_00
+          - entity: automation.termo_on_14_00
+          - entity: automation.enchufe_bano
+          - entity: automation.mensajes_para_sara
+          - entity: automation.notificafion_puerta
+          - entity: automation.switch_bano_off_each_30_min
+        title: Automatización
+        type: entities
+      - cards:
+          - entities:
+              - sensor.date
+              - sensor.time
+            show_header_toggle: false
+            title: Home
+            type: entities
+          - entity: weather.casa
+            type: weather-forecast
+        type: vertical-stack
+    path: default_view
+    title: Home
+  - badges: []
+    cards:
+      - entities:
+          - entity: input_select.zigbee2mqtt_log_level
+          - entity: input_text.zigbee2mqtt_new_name
+          - entity: input_text.zigbee2mqtt_old_name
+          - entity: input_text.zigbee2mqtt_remove
+          - entity: script.zigbee2mqtt_remove
+          - entity: script.zigbee2mqtt_rename
+          - entity: sensor.coordinator_version
+          - entity: sensor.zigbee2mqtt_bridge_state
+          - entity: sensor.zigbee2mqtt_version
+          - entity: switch.zigbee2mqtt_main_join
+          - entity: timer.zigbee_permit_join
+          - entity: sensor.zigbee2mqtt_networkmap
+        show_header_toggle: false
+        title: Zigbee
+        type: entities
+      - entities:
+          - script.decrement_termo_time_in_5_min
+        title: Script
+        type: entities
+      - entities:
+          - entity: sensor.main_door_linkquality
+          - entity: sensor.button1_linkquality
+          - entity: sensor.switchbano_linkquality
+          - entity: sensor.switchtermo_linkquality
+          - entity: sensor.main_door_battery
+          - entity: sensor.button1_battery
+        show_header_toggle: false
+        title: Zigbee Sensor Stats
+        type: entities
+    path: control
+    title: Control
+  - badges: []
+    cards:
+      - entity: sensor.zigbee2mqtt_networkmap
+        type: 'custom:zigbee2mqtt-networkmap'
+      - entities:
+          - sensor.transmission_down_speed
+          - sensor.transmission_up_speed
+          - sensor.transmission_active_torrents
+          - sensor.transmission_total_torrents
+        type: history-graph
+    path: status
+    title: Status
+  - badges: []
+    cards:
+      - entities:
+          - entity: device_tracker.grcanosa_grcanosaphone
+        type: map
+    path: testing
+    title: Testing
