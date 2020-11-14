@@ -7,15 +7,7 @@ serial:
   port: /dev/ttyACM0
 advanced:
   report: true
-
-
 devices:
-  '0x00158d0003f4772c':
-    friendly_name: movimiento_puerta_cocina
-    retain: false
-    occupancy_timeout: 61
-    no_occupancy_since:
-      - 62
   '0x00158d0002a1b150':
     friendly_name: main_door
     retain: false
@@ -32,5 +24,8 @@ devices:
     friendly_name: luzventana
     retain: false
   '0x00158d0002a3743c':
-    friendly_name: 'cube'
+    friendly_name: cube
+    retain: false
+  '0x588e81fffe174079':
+    friendly_name: 'luzventana2'
     retain: false

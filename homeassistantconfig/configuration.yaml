@@ -194,3 +194,13 @@ input_number:
 timer:
   termo:
     duration: "00:05:00"          
+    
+#ffmpeg:
+
+light:
+  - platform: group
+    name: Luces Ventana
+    entities:
+    - light.0x588e81fffe174079_light
+    - light.0x680ae2fffeb15341_light
+

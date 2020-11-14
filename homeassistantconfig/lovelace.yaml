@@ -5,20 +5,27 @@ views:
       - entity: binary_sensor.main_door
       - entity: sensor.switchtermo_power
     cards:
+      - type: glance
+        entities:
+          - switch.switch_termo
+          - light.luces_ventana
+          - switch.switch_bano
+        state_color: true  
+        show_state: false
       - entities:
           - input_number.termo_time
-          - switch.switch_termo
+#          - switch.switch_termo
         show_header_toggle: false
         title: Termo
         state_color: true
         type: entities
-      - entities:
-          - entity: light.0x680ae2fffeb15341_light
-          - entity: switch.switch_bano
-        title: OnOff
-        show_header_toggle: false
-        type: entities
-        state_color: true
+ #     - entities:
+#          - entity: light.0x680ae2fffeb15341_light
+#          - entity: switch.switch_bano
+#        title: OnOff
+#        show_header_toggle: false
+#        type: entities
+#        state_color: true
       - entities:
           - name: Router
             type: weblink

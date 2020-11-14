@@ -79,6 +79,29 @@
       message: "{% if is_state('binary_sensor.main_door', 'on') %}\n     HOME => Puerta\
         \ abierta\n{% else %}\n     HOME => Puerta cerrada\n{% endif %} \n"
     service: notify.bot_to_sara
+- id: '222222222222_msg_termo'
+  alias: Notificacion termo encendido
+  trigger:
+  - entity_id: switch.switch_termo
+    for: 00:00:01
+    from: 'on'
+    to: 'off'
+    platform: state
+  - entity_id: switch.switch_termo
+    for: 00:00:01
+    from: 'off'
+    to: 'on'
+    platform: state
+  condition:
+  action:
+  - data:
+      message: "{% if is_state('switch.switch_termo', 'on') %}\n     HOME => Termo\
+        \ encendido\n{% else %}\n     HOME => Termo apagado\n{% endif %} \n"    
+    service: notify.bot_to_grcanosa    
+  - data:
+      message: "{% if is_state('switch.switch_termo', 'on') %}\n     HOME => Termo\
+        \ encendido\n{% else %}\n     HOME => Termo apagado\n{% endif %} \n"    
+    service: notify.bot_to_sara  
 - id: '1548797344389'
   alias: Switch Baño OFF each 30 min
   trigger:
@@ -103,13 +126,27 @@
   - data:
       entity_id: switch.switch_termo
     service: switch.turn_off
+- id: '1612345689012'
+  alias: CuboFlip90
+  trigger: 
+  - entity_id: sensor.cubo_action
+    platform: state
+    to: flip90
+  action:
+  - service: light.toggle
+    data:
+      entity_id: light.luces_ventana
 - id: '1599999999999'
-  alias: Cubo
+  alias: CuboRotate
   trigger:
   - entity_id: sensor.cubo_action
     platform: state
+    to: rotate_right
+  - entity_id: sensor.cubo_action
+    platform: state
+    to: rotate_left  
   action:
-  - service: python_script.cubo
+  - service: python_script.cubo_rotate
     data_template:
       full: '{{ trigger.to_state }}'
 - id: '1569690957862'
